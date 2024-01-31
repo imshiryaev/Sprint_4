@@ -16,7 +16,6 @@ public class MainPageQuestionList {
     }
 
     public String getTextAnswer(int index) {
-        try {
             By question = By.xpath(".//div[@id='accordion__heading-" + index + "']");
             By answer = By.xpath(".//div[@id='accordion__panel-" + index + "']/p") ;
 
@@ -25,11 +24,7 @@ public class MainPageQuestionList {
             new WebDriverWait(driver, Duration.ofSeconds(3))
                     .until(ExpectedConditions.visibilityOf(driver.findElement(answer)));
             return driver.findElement(answer).getText();
-        }
 
-        catch (Exception e) {
-            return null;
-        }
 
     }
 }

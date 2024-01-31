@@ -5,6 +5,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
@@ -12,7 +13,7 @@ public class MainPageQuestionTest {
     private final int index;
     private final String expectedAnswer;
     private ChromeDriver driver;
-
+    ChromeOptions options = new ChromeOptions();
     public MainPageQuestionTest(int index, String expectedAnswer) {
         this.index = index;
         this.expectedAnswer = expectedAnswer;
@@ -33,7 +34,8 @@ public class MainPageQuestionTest {
     }
     @Test
     public void test() {
-        driver = new ChromeDriver();
+        options.addArguments("--headless");
+        driver = new ChromeDriver(options);
         driver.get("https://qa-scooter.praktikum-services.ru/");
 
         MainPageQuestionList mainPageObject = new MainPageQuestionList(driver);
