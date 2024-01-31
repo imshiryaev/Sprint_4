@@ -3,7 +3,10 @@ package ru.qascooter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 public class MainPageQuestionList {
 
     private final WebDriver driver;
@@ -19,6 +22,8 @@ public class MainPageQuestionList {
 
             ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(question));
             driver.findElement(question).click();
+            new WebDriverWait(driver, Duration.ofSeconds(3))
+                    .until(ExpectedConditions.visibilityOf(driver.findElement(answer)));
             return driver.findElement(answer).getText();
         }
 
