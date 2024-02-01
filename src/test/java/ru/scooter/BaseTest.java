@@ -6,14 +6,18 @@ import org.junit.Before;
 import org.openqa.selenium.Cookie;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 public class BaseTest {
     protected WebDriver driver;
+    protected ChromeOptions options;
 
     @Before
     public void startUp() {
         WebDriverManager.chromedriver().setup();
-        driver = new ChromeDriver();
+        options = new ChromeOptions();
+        options.addArguments("--headless");
+        driver = new ChromeDriver(options);
         driver.get("https://qa-scooter.praktikum-services.ru");
 
         setCookie(new Cookie("Cartoshka", "true"));
