@@ -1,22 +1,19 @@
-package ru.qascooter;
+package ru.scooter;
 
-import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import org.openqa.selenium.chrome.ChromeDriver;
+import ru.scooter.pageobject.page.MainPage;
 
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class MainPageQuestionTest {
-    private ChromeDriver driver;
-
+public class MainPageTest extends BaseTest {
     private final int index;
     private final String expectedAnswer;
     private final String expectedQuestion;
 
-    public MainPageQuestionTest(int index, String expectedQuestion, String expectedAnswer) {
+    public MainPageTest(int index, String expectedQuestion, String expectedAnswer) {
         this.index = index;
         this.expectedQuestion = expectedQuestion;
         this.expectedAnswer = expectedAnswer;
@@ -38,30 +35,17 @@ public class MainPageQuestionTest {
 
     @Test
     public void testQuestion() {
-        driver = new ChromeDriver();
-        driver.get("https://qa-scooter.praktikum-services.ru");
-        MainPageQuestionList mainPageObject = new MainPageQuestionList(driver);
-
+        MainPage mainPageObject = new MainPage(driver);
         mainPageObject.clickOnQuestionButton(index);
-
         String actualQuestionResult = mainPageObject.getTextQuestion(index);
         assertEquals(expectedQuestion, actualQuestionResult);
     }
 
     @Test
     public void testAnswer() {
-        driver = new ChromeDriver();
-        driver.get("https://qa-scooter.praktikum-services.ru/");
-        MainPageQuestionList mainPageObject = new MainPageQuestionList(driver);
-
+        MainPage mainPageObject = new MainPage(driver);
         mainPageObject.clickOnQuestionButton(index);
-
         String actualAnswerResult = mainPageObject.getTextAnswer(index);
         assertEquals(expectedAnswer, actualAnswerResult);
-    }
-
-    @After
-    public void browserQuit() {
-        driver.quit();
     }
 }
