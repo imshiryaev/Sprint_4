@@ -3,10 +3,7 @@ package ru.qascooter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
 public class MainPageQuestionList {
 
     private final WebDriver driver;
@@ -15,16 +12,20 @@ public class MainPageQuestionList {
         this.driver = driver;
     }
 
-    public String getTextAnswer(int index) {
-            By question = By.xpath(".//div[@id='accordion__heading-" + index + "']");
-            By answer = By.xpath(".//div[@id='accordion__panel-" + index + "']/p") ;
+    private final By questionButton = By.className("accordion__item");
+    private final By questionText = By.className("accordion__button");
+    private final By answerText = By.className("accordion__panel");
 
-            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(question));
-            driver.findElement(question).click();
-            new WebDriverWait(driver, Duration.ofSeconds(3))
-                    .until(ExpectedConditions.visibilityOf(driver.findElement(answer)));
-            return driver.findElement(answer).getText();
+    public void clickOnQuestionButton(int index) {
+            ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(questionButton));
+            driver.findElements(questionButton).get(index).click();
+    }
 
+    public String getTextQuestion(int index) {
+        return driver.findElements(questionText).get(index).getText();
+    }
 
+    public String getTextAnswer(int index){
+        return driver.findElements(answerText).get(index).getText();
     }
 }
