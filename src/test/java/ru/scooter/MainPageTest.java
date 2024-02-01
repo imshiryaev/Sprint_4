@@ -35,17 +35,19 @@ public class MainPageTest extends BaseTest {
 
     @Test
     public void testQuestion() {
-        MainPage mainPageObject = new MainPage(driver);
-        mainPageObject.clickOnQuestionButton(index);
-        String actualQuestionResult = mainPageObject.getTextQuestion(index);
+        String actualQuestionResult = new MainPage(driver)
+                .clickOnQuestionButton(index)
+                .getTextQuestion(index);
+
         assertEquals(expectedQuestion, actualQuestionResult);
     }
 
     @Test
     public void testAnswer() {
-        MainPage mainPageObject = new MainPage(driver);
-        mainPageObject.clickOnQuestionButton(index);
-        String actualAnswerResult = mainPageObject.getTextAnswer(index);
+        String actualAnswerResult = new MainPage(driver)
+                .clickOnQuestionButton(index)
+                .getTextAnswer(index);
+
         assertEquals(expectedAnswer, actualAnswerResult);
     }
 }

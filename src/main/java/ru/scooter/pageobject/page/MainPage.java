@@ -13,9 +13,10 @@ public class MainPage extends BasePage {
     private final By questionText = By.className("accordion__button");
     private final By answerText = By.className("accordion__panel");
 
-    public void clickOnQuestionButton(int index) {
+    public MainPage clickOnQuestionButton(int index) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(questionButton));
         driver.findElements(questionButton).get(index).click();
+        return this;
     }
 
     public String getTextQuestion(int index) {
