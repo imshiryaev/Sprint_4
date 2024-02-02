@@ -3,17 +3,17 @@ package ru.scooter;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
-import ru.scooter.pageobject.page.MainPage;
+import ru.scooter.pageobject.fragments.QuestionList;
 
 import static org.junit.Assert.assertEquals;
 
 @RunWith(Parameterized.class)
-public class MainPageTest extends BaseTest {
+public class QuestionListTest extends BaseTest {
     private final int index;
     private final String expectedAnswer;
     private final String expectedQuestion;
 
-    public MainPageTest(int index, String expectedQuestion, String expectedAnswer) {
+    public QuestionListTest(int index, String expectedQuestion, String expectedAnswer) {
         this.index = index;
         this.expectedQuestion = expectedQuestion;
         this.expectedAnswer = expectedAnswer;
@@ -35,7 +35,7 @@ public class MainPageTest extends BaseTest {
 
     @Test
     public void testQuestion() {
-        String actualQuestionResult = new MainPage(driver)
+        String actualQuestionResult = new QuestionList(driver)
                 .clickOnQuestionButton(index)
                 .getTextQuestion(index);
 
@@ -44,7 +44,7 @@ public class MainPageTest extends BaseTest {
 
     @Test
     public void testAnswer() {
-        String actualAnswerResult = new MainPage(driver)
+        String actualAnswerResult = new QuestionList(driver)
                 .clickOnQuestionButton(index)
                 .getTextAnswer(index);
 

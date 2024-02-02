@@ -1,12 +1,13 @@
-package ru.scooter.pageobject.page;
+package ru.scooter.pageobject.fragments;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import ru.scooter.pageobject.page.BasePage;
 
-public class MainPage extends BasePage {
-    public MainPage(WebDriver driver) {
+public class QuestionList extends BasePage {
+    public QuestionList(WebDriver driver) {
         super(driver);
     }
 
@@ -14,8 +15,8 @@ public class MainPage extends BasePage {
     private final By questionText = By.className("accordion__button");
     private final By answerText = By.className("accordion__panel");
 
-    public MainPage clickOnQuestionButton(int index) {
-        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", driver.findElement(questionButton));
+    public QuestionList clickOnQuestionButton(int index) {
+        ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", driver.findElements(questionButton).get(index));
         driver.findElements(questionButton).get(index).click();
         return this;
     }
