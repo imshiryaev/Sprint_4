@@ -3,6 +3,7 @@ package ru.scooter.pageobject.page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 
 public class MainPage extends BasePage {
     public MainPage(WebDriver driver) {
@@ -24,6 +25,7 @@ public class MainPage extends BasePage {
     }
 
     public String getTextAnswer(int index) {
+        wait.until(ExpectedConditions.visibilityOfAllElements(driver.findElements(answerText).get(index)));
         return driver.findElements(answerText).get(index).getText();
     }
 }
