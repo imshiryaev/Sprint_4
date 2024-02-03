@@ -10,14 +10,13 @@ import org.openqa.selenium.chrome.ChromeOptions;
 
 public class BaseTest {
     protected WebDriver driver;
-    protected ChromeOptions options;
+    protected ChromeOptions options = new ChromeOptions();
 
     @Before
     public void startUp() {
         WebDriverManager.chromedriver().setup();
-        options = new ChromeOptions();
         options.addArguments("--headless");
-        driver = new ChromeDriver(options);
+        driver = new ChromeDriver();
         driver.get("https://qa-scooter.praktikum-services.ru");
 
         setCookie(new Cookie("Cartoshka", "true"));
