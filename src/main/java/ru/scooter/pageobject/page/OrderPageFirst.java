@@ -3,8 +3,8 @@ package ru.scooter.pageobject.page;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
-public class OrderPageOne extends BasePage {
-    public OrderPageOne(WebDriver driver) {
+public class OrderPageFirst extends BasePage {
+    public OrderPageFirst(WebDriver driver) {
         super(driver);
     }
 
@@ -15,22 +15,22 @@ public class OrderPageOne extends BasePage {
     private final By orderInputPhone = By.xpath("//input[@placeholder='* Телефон: на него позвонит курьер']");
     private final By nextButton = By.xpath(".//button[text()='Далее']");
 
-    public OrderPageOne fillOrderInputName(String name) {
+    public OrderPageFirst fillOrderInputName(String name) {
         driver.findElement(orderInputName).sendKeys(name);
         return this;
     }
 
-    public OrderPageOne fillOrderInputLastName(String lastName) {
+    public OrderPageFirst fillOrderInputLastName(String lastName) {
         driver.findElement(orderInputLastName).sendKeys(lastName);
         return this;
     }
 
-    public OrderPageOne fillOrderInputAddress(String address) {
+    public OrderPageFirst fillOrderInputAddress(String address) {
         driver.findElement(orderInputAddress).sendKeys(address);
         return this;
     }
 
-    public OrderPageOne fillOrderInputMetro(String metro) {
+    public OrderPageFirst fillOrderInputMetro(String metro) {
         driver.findElement(orderInputMetro).click();
         String selectMetro = String.format(".//div[@class='select-search__select']//*[text()='%s']", metro);
         driver.findElement(By.xpath(selectMetro)).click();
@@ -41,13 +41,17 @@ public class OrderPageOne extends BasePage {
         driver.findElement(orderInputPhone).sendKeys(phone);
     }
 
-    public OrderPageOne fillOrderFormOne(String name, String lastName, String address, String metro, String phone) {
-        fillOrderInputName(name).fillOrderInputLastName(lastName).fillOrderInputAddress(address).fillOrderInputMetro(metro).fillOrderInputPhone(phone);
+    public OrderPageFirst fillOrderFormFirst(String name, String lastName, String address, String metro, String phone) {
+        fillOrderInputName(name)
+                .fillOrderInputLastName(lastName)
+                .fillOrderInputAddress(address)
+                .fillOrderInputMetro(metro)
+                .fillOrderInputPhone(phone);
         return this;
     }
 
-    public OrderPageTwo clickOnNextButton() {
+    public OrderPageSecond clickOnNextButton() {
         driver.findElement(nextButton).click();
-        return new OrderPageTwo(driver);
+        return new OrderPageSecond(driver);
     }
 }

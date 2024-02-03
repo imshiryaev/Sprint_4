@@ -5,8 +5,8 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-public class OrderPageTwo extends BasePage {
-    public OrderPageTwo(WebDriver driver) {
+public class OrderPageSecond extends BasePage {
+    public OrderPageSecond(WebDriver driver) {
         super(driver);
     }
 
@@ -20,7 +20,7 @@ public class OrderPageTwo extends BasePage {
     private final By orderModalConfirmationButtonYes = By.xpath(".//button[text()='Да']");
     private final By orderModalConfirmed = By.className("Order_Modal__YZ-d3");
 
-    public OrderPageTwo fillOrderInputDeliveryDate(String date) {
+    public OrderPageSecond fillOrderInputDeliveryDate(String date) {
         driver.findElement(orderInputDeliveryDate).sendKeys(date);
         driver.findElement(orderInputDeliveryDate).sendKeys(Keys.ENTER);
         return this;
@@ -30,13 +30,13 @@ public class OrderPageTwo extends BasePage {
         driver.findElement(orderRentRime).click();
     }
 
-    public OrderPageTwo fillOrderRentRime(int period) {
+    public OrderPageSecond fillOrderRentRime(int period) {
         clickOnOrderRentTime();
         driver.findElements(rentTimeList).get(period).click();
         return this;
     }
 
-    public OrderPageTwo fillOrderColor(int color) {
+    public OrderPageSecond fillOrderColor(int color) {
         driver.findElements(orderCheckBoxList).get(color).click();
         return this;
     }
@@ -45,17 +45,20 @@ public class OrderPageTwo extends BasePage {
         driver.findElement(orderInputCourierComment).sendKeys(comment);
     }
 
-    public OrderPageTwo fillOrderFormTwo(String date, int period, int color, String comment) {
-        fillOrderInputDeliveryDate(date).fillOrderRentRime(period).fillOrderColor(color).fillOrderInputCourierComment(comment);
+    public OrderPageSecond fillOrderFormSecond(String date, int period, int color, String comment) {
+        fillOrderInputDeliveryDate(date)
+                .fillOrderRentRime(period)
+                .fillOrderColor(color)
+                .fillOrderInputCourierComment(comment);
         return this;
     }
 
-    public OrderPageTwo clickOnOrderButton() {
+    public OrderPageSecond clickOnOrderButton() {
         driver.findElement(orderButton).click();
         return this;
     }
 
-    public OrderPageTwo orderConfirmation() {
+    public OrderPageSecond orderConfirmation() {
         wait.until(ExpectedConditions.visibilityOfElementLocated(orderModalConfirmation));
         driver.findElement(orderModalConfirmationButtonYes).click();
         return this;

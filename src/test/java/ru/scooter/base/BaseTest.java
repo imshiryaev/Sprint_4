@@ -1,4 +1,4 @@
-package ru.scooter;
+package ru.scooter.base;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.After;

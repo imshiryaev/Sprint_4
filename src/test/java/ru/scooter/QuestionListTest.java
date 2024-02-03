@@ -3,6 +3,7 @@ package ru.scooter;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import ru.scooter.base.BaseTest;
 import ru.scooter.pageobject.fragments.QuestionList;
 
 import static org.junit.Assert.assertEquals;

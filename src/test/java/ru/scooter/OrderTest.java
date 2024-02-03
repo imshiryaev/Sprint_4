@@ -3,6 +3,7 @@ package ru.scooter;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import ru.scooter.base.BaseTest;
 import ru.scooter.pageobject.fragments.Header;
 
 import static org.junit.Assert.assertTrue;
@@ -31,18 +32,24 @@ public class OrderTest extends BaseTest {
         this.courierComment = courierComment;
     }
 
-
     @Parameterized.Parameters
     public static Object[][] getParams() {
         return new Object[][]{
-                {"Имя", "Фамилия", "Адрес", "Преображенская площадь", "+72453456464", "23.02.2024", 3, 0, "Комментарий"},
+                {"Имя", "Фамилия", "Адрес", "Преображенская площадь", "+72453456464", "23.02.2024", 2, 0, "Комментарий"},
                 {"ИмяДва", "ФамилияДва", "АдресДва", "Речной вокзал", "34559876464", "15.02.2024", 2, 1, "КомментарийДва"}
         };
     }
 
     @Test
     public void orderTest() {
-        boolean isOrderConfirmedDisplayed = new Header(driver).clickOnHeaderOrderButton().fillOrderFormOne(name, lastName, address, metro, phone).clickOnNextButton().fillOrderFormTwo(deliveryDate, rentTime, color, courierComment).clickOnOrderButton().orderConfirmation().isOrderModalConfirmed();
+        boolean isOrderConfirmedDisplayed = new Header(driver)
+                .clickOnHeaderOrderButton()
+                .fillOrderFormFirst(name, lastName, address, metro, phone)
+                .clickOnNextButton()
+                .fillOrderFormSecond(deliveryDate, rentTime, color, courierComment)
+                .clickOnOrderButton()
+                .orderConfirmation()
+                .isOrderModalConfirmed();
         assertTrue(isOrderConfirmedDisplayed);
     }
 }
