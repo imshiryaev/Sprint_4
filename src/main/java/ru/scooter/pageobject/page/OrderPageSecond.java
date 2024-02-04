@@ -12,10 +12,8 @@ public class OrderPageSecond extends BasePage {
 
     private final By orderInputDeliveryDate = By.xpath(".//input[@placeholder='* Когда привезти самокат']");
     private final By orderRentRime = By.className("Dropdown-root");
-    private final By orderCheckBoxList = By.className("Checkbox_Label__3wxSf");
     private final By orderInputCourierComment = By.xpath(".//input[@placeholder='Комментарий для курьера']");
     private final By orderButton = By.xpath(".//div[@class='Order_Buttons__1xGrp']/button[text()='Заказать']");
-    private final By rentTimeList = By.className("Dropdown-option");
     private final By orderModalConfirmation = By.className("Order_ModalHeader__3FDaJ");
     private final By orderModalConfirmationButtonYes = By.xpath(".//button[text()='Да']");
     private final By orderModalConfirmed = By.className("Order_Modal__YZ-d3");
@@ -30,14 +28,16 @@ public class OrderPageSecond extends BasePage {
         driver.findElement(orderRentRime).click();
     }
 
-    public OrderPageSecond fillOrderRentRime(int period) {
+    public OrderPageSecond fillOrderRentRime(String period) {
         clickOnOrderRentTime();
-        driver.findElements(rentTimeList).get(period).click();
+        String rentTime = String.format(".//div[@class='Dropdown-menu']//*[text()='%s']", period);
+        driver.findElement(By.xpath(rentTime)).click();
         return this;
     }
 
-    public OrderPageSecond fillOrderColor(int color) {
-        driver.findElements(orderCheckBoxList).get(color).click();
+    public OrderPageSecond fillOrderColor(String color) {
+        String rentTime = String.format(".//div[@class='Order_Checkboxes__3lWSI']//*[text()='%s']", color);
+        driver.findElement(By.xpath(rentTime)).click();
         return this;
     }
 
@@ -45,7 +45,7 @@ public class OrderPageSecond extends BasePage {
         driver.findElement(orderInputCourierComment).sendKeys(comment);
     }
 
-    public OrderPageSecond fillOrderFormSecond(String date, int period, int color, String comment) {
+    public OrderPageSecond fillOrderFormSecond(String date, String period, String color, String comment) {
         fillOrderInputDeliveryDate(date)
                 .fillOrderRentRime(period)
                 .fillOrderColor(color)

@@ -16,11 +16,11 @@ public class OrderTest extends BaseTest {
     private final String metro;
     private final String phone;
     private final String deliveryDate;
-    private final int rentTime;
-    private final int color;
+    private final String rentTime;
+    private final String color;
     private final String courierComment;
 
-    public OrderTest(String name, String lastName, String address, String metro, String phone, String deliveryDate, int rentTime, int color, String courierComment) {
+    public OrderTest(String name, String lastName, String address, String metro, String phone, String deliveryDate, String rentTime, String color, String courierComment) {
         this.name = name;
         this.lastName = lastName;
         this.address = address;
@@ -35,8 +35,8 @@ public class OrderTest extends BaseTest {
     @Parameterized.Parameters
     public static Object[][] getParams() {
         return new Object[][]{
-                {"Имя", "Фамилия", "Адрес", "Преображенская площадь", "+72453456464", "23.02.2024", 2, 0, "Комментарий"},
-                {"ИмяДва", "ФамилияДва", "АдресДва", "Речной вокзал", "34559876464", "15.02.2024", 2, 1, "КомментарийДва"}
+                {"Имя", "Фамилия", "Адрес", "Преображенская площадь", "+72453456464", "23.02.2024", "трое суток", "чёрный жемчуг", "Комментарий"},
+                {"ИмяДва", "ФамилияДва", "АдресДва", "Речной вокзал", "34559876464", "15.02.2024", "семеро суток", "серая безысходность", "КомментарийДва"}
         };
     }
 
