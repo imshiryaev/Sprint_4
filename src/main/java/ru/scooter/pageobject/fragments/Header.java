@@ -2,7 +2,7 @@ package ru.scooter.pageobject.fragments;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import ru.scooter.pageobject.page.BasePage;
+import ru.scooter.pageobject.base.BasePage;
 import ru.scooter.pageobject.page.OrderPageFirst;
 
 public class Header extends BasePage {

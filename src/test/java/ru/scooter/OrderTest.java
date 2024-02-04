@@ -5,6 +5,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
 import ru.scooter.base.BaseTest;
 import ru.scooter.pageobject.fragments.Header;
+import ru.scooter.pageobject.page.MainPage;
 
 import static org.junit.Assert.assertTrue;
 
@@ -41,9 +42,22 @@ public class OrderTest extends BaseTest {
     }
 
     @Test
-    public void orderTest() {
+    public void orderTestFirstButton() {
         boolean isOrderConfirmedDisplayed = new Header(driver)
                 .clickOnHeaderOrderButton()
+                .fillOrderFormFirst(name, lastName, address, metro, phone)
+                .clickOnNextButton()
+                .fillOrderFormSecond(deliveryDate, rentTime, color, courierComment)
+                .clickOnOrderButton()
+                .orderConfirmation()
+                .isOrderModalConfirmed();
+        assertTrue(isOrderConfirmedDisplayed);
+    }
+
+    @Test
+    public void orderTestSecondButton() {
+        boolean isOrderConfirmedDisplayed = new MainPage(driver)
+                .clickOnMainPageOrderButton()
                 .fillOrderFormFirst(name, lastName, address, metro, phone)
                 .clickOnNextButton()
                 .fillOrderFormSecond(deliveryDate, rentTime, color, courierComment)

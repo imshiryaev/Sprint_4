@@ -4,7 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import ru.scooter.pageobject.page.BasePage;
+import ru.scooter.pageobject.base.BasePage;
 
 public class QuestionList extends BasePage {
     public QuestionList(WebDriver driver) {

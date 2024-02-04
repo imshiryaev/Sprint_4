@@ -2,6 +2,7 @@ package ru.scooter.pageobject.page;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import ru.scooter.pageobject.base.BasePage;
 
 public class OrderPageFirst extends BasePage {
     public OrderPageFirst(WebDriver driver) {

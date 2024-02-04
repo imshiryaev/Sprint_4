@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import ru.scooter.pageobject.base.BasePage;
 
 public class OrderPageSecond extends BasePage {
     public OrderPageSecond(WebDriver driver) {
